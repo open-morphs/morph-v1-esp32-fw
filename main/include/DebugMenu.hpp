@@ -1,0 +1,28 @@
+#pragma once
+typedef enum {
+    MENU_ENABLE_BLE = '1',
+    MENU_DISABLE_BLE,
+    MENU_GET_BATTERY,
+    MENU_GET_HANDSET_CONNECTED,
+    MENU_GET_MIC_STATE,
+    MENU_GET_VOLUME,
+    MENU_GET_CONNECTED,
+    MENU_TOGGLE_MIC,
+    MENU_VOLUME_INC,
+    MENU_VOLUME_DEC = 'a',
+    MENU_RESET_MAC = 'b',
+    MENU_CONNECT_PREV = 'c',
+    MENU_DISCONNECT_ALL = 'd',
+    MENU_GET_ANC_STATE = 'e',
+    MENU_GET_CURRENT_MODE = 'f',
+    MENU_TOGGLE_ANC = 'g',
+    MENU_SET_ANC_MODE = 'h',
+    MENU_SEND_RAW_BYTES = 'i',
+    MENU_START_PAIRING = 'j',
+    MENU_START_AUDIO_NOTIFICATIONS = 'k',
+    MENU_DISCONNECT_LAST_CONNECTED = 'l',
+    MENU_REBOOT = 'x',
+    MENU_CHANGE_MAC = '0',
+}eMenu;
+
+void consoleTask(void* args);

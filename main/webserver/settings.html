@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <div class="menu">
+        <a class="menu_item" href="/">Home</a>
+        <a class="active"  href="/settings">Settings</a>
+        <a class="menu_item" href="/ota">OTA </a>
+        <a class="menu_item" href="/closewifi">Exit </a>
+    </div>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <title>Settings</title>
+</head>
+<body onload="getSettings()">
+    <form action="/settings" method="post" accept-charset="UTF-8" name = "wifiForm" onsubmit="return validateSsid()">
+        <br><br>
+        <table width="300">
+            <tr>
+                <td width="50%">Language</td>
+                <td width="50%">
+                    <select size="1" name = "lang" id="langsel">
+                        <option value=0>English</option>
+                        <option value=1>Russian</option>
+                        <option value=2>Italian</option>
+                        <option value=3>German</option>
+                        <option value=4>Japanese</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td width="50%">Play Tone on Connect</td>
+                <td width="50%">
+                    <input type="checkbox" name = "beep" id="beepCheckBox">
+                </td>
+            </tr>
+            <tr>
+                <td width="50%">Lockscreen image</td>
+                <td width="50%">
+                    <select size="1" name = "image" id="imagesel">
+                        <option value=0>Morph</option>
+                        <option value=1>Scull</option>
+                        <option value=2>Cassete</option>
+                        <option value=3>Cat</option>
+                    </select>
+                </td>
+            </tr>
+            <!-- <tr>
+                <td colspan="2"><strong>WiFi settings</strong></td>
+            </tr>
+            <tr>
+                <td width="50%">WiFi ssid</td>
+                <td width="50%">
+                    <input type="text" name="ssid" placeholder="Enter ssid" id="ssidInput">
+                </td>
+            </tr>
+            <tr>
+                <td width="50%">Password</td>
+                <td width="50%">
+                    <input type="password" name="pass" placeholder="Enter password" id = "passInput">
+                </td>
+            </tr> -->
+        </table>
+        <br><br><br>
+        <input type="submit" class = "submitbutton" value="Save" >
+        <br>
+    </form>
+</body>
+</html>
