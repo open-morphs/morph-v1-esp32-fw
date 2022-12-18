@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saving...</title>
+</head>
+<body>
+    <script src="script.js"></script>
+    <noscript>Please enable JavaScript for correct displaying</noscript>
+
+    <h2 id="logo" class="run-animation">
+      Settings saving...
+    </h2>
+
+    <div class="progress">
+        <div class="progress-value" id = "myprogressBar"></div>
+    </div>
+
+    <script> 
+        
+      function saveSettings() {
+
+        console.debug("hi");
+
+        document.getElementById('myprogressBar').style.animation="load 3s normal forwards";
+
+        setTimeout(function(){
+            window.location.href = '/settings';
+         }, 3500);
+
+        console.debug("bye");
+      }
+      saveSettings();
+    </script> 
+</body>
+</html>
