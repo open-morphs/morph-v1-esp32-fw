@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <div class="menu">
+            <a class="menu_item" href="/">Home</a>
+            <a class="menu_item"  href="/settings">Settings</a>
+            <a class="active" href="/ota">OTA </a>
+            <a class="menu_item" href="/closewifi">Exit </a>
+        </div>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <script src="script.js"></script>
+        <title>Firmware update</title>
+    </head>
+
+    <body onload="getstatus()">
+    <h4 id="latest_firmware"></h4>
+    <h4 id="battery"></h4>
+    <h3>Firmware update steps:</h3>
+    <label>1. Choose binary file with "Browse" button</label>
+    <br>
+    <label>2. Click on "Update firmware" button</label>
+    <br>
+    <br>
+    <input type="file" id="selectedFile" accept=".bin" style="display: none;" onchange="onFileChoosen()" />
+    <input type="button" id="browse_button" class = "submitbutton" value="Browse..." onclick="document.getElementById('selectedFile').click();" />
+    <h3 id="file_info"></h3>
+    <input type='submit' class = "submitbutton" id="upload_button" value='Update Firmware' onclick="updateFirmware()">
+    <h4 id="progressStatus"></h4>
+    <label id="battery_warning">Battery charge level is not enough!</label>
+
+    <script type="text/javascript">
+        function onFileChoosen() {
+            document.getElementById("progressStatus").innerHTML = " ";
+            var x = document.getElementById("selectedFile");
+            var file = x.files[0];
+            document.getElementById("file_info").innerHTML = "<h4>File: " + file.name + "<br>" + "Size: " + file.size + " bytes</h4>";
+        }
+
+        function updateFirmware() {
+            // Form Data
+            var formData = new FormData();
+
+            var fileSelect = document.getElementById("selectedFile");
+
+            if (fileSelect.files && fileSelect.files.length == 1) {
+                var file = fileSelect.files[0];
+                formData.set("file", file, file.name);
+
+                // Http Request
+                var xhr = new XMLHttpRequest();
+
+                //Upload progress
+                xhr.upload.addEventListener("progress", function(evt) {
+                    if (evt.lengthComputable) {
+                        var percentComplete = (evt.loaded / evt.total) * 100;
+                        var x = Math.floor(percentComplete);
+
+                        document.getElementById("progressStatus").innerHTML = "status: uploading: " + x + "%";
+
+                        if (evt.loaded == evt.total) {
+                            getstatus();
+                        }
+
+                    } else {
+                        window.alert('total size is unknown')
+                    }
+                }, false);
+
+                xhr.onerror = function () {
+                    getstatus();
+                };
+
+                xhr.open('POST', "/update", true);
+                xhr.responseType = "blob";  
+                xhr.send(formData);
+            }
+            else {
+                window.alert('Select A File First')
+            }
+        }
+
+        function getstatus() {
+            var xhr = new XMLHttpRequest();
+            var requestURL = "/status";
+            xhr.open('GET', requestURL, true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() { // Call a function when the state changes.
+                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+
+                    document.getElementById("latest_firmware").innerHTML = "Current firmware: " + response.compile_date;
+                    document.getElementById("battery").innerHTML = "Batterry level: " + response.battery + "%";
+                    document.getElementById('progressStatus').style.color = response.status <= 1 ? "white" : "red";
+                    if (response.battery < 40) {
+                        document.getElementById("battery_warning").style.color = "red";
+                        document.getElementById("upload_button").classList.add("hidden");
+                        document.getElementById("browse_button").classList.add("hidden");
+                        document.getElementById("battery_warning").classList.remove("hidden")
+                    }
+                    else {
+                        document.getElementById("upload_button").classList.remove("hidden");
+                        document.getElementById("browse_button").classList.remove("hidden");
+                        document.getElementById("battery_warning").classList.add("hidden")
+                    }
+                    if (response.status == 1) {
+                        document.getElementById("progressStatus").innerHTML = "status: success, rebooting now...";
+                    }
+                    else if (response.status == 2){
+                        document.getElementById("progressStatus").innerHTML = "status: invalid file";
+                    }
+                    else if (response.status == 3){
+                        document.getElementById("progressStatus").innerHTML = "status: timeout";
+                    }
+                    else if (response.status == 4){
+                        document.getElementById("progressStatus").innerHTML = "status: failed to begin OTA";
+                    }
+                    else if (response.status == 5){
+                        document.getElementById("progressStatus").innerHTML = "status: failed to finish OTA";
+                    }
+                    else if (response.status == 6){
+                        document.getElementById("progressStatus").innerHTML = "status: failed to update partitions";
+                    }
+                }
+            }
+            xhr.send();
+        }
+    </script>
+    </body>
+</html>

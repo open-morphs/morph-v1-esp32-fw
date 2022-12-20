@@ -1,0 +1,128 @@
+body {
+    background: #333;
+    text-align: center;
+    color: #eee;
+    font-family: system-ui, sans-serif;
+}
+h1 {
+    font-size: 42px;
+    font-weight: 600;
+    margin: 0 0 30px;
+}
+
+.menu {
+    margin: 0px;
+    padding: 0px 20px 0px 20px;
+    background: linear-gradient(to top, #07639f, #67bdf6);
+    font-weight: bold;
+    /* text-align:center; */
+    text-decoration: none;
+    border-radius: 5px;
+
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.menu_item {
+    padding: 15px;
+    text-decoration: none;
+    font-size: medium;
+    color: White;
+
+    line-height: 50px;
+}
+
+.hidden { display:none; }
+
+table {
+    margin-top: 25px;
+    text-align:justify;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing:10px 10px;
+}
+
+tr {
+    margin-top: 50px;
+    padding: 50px;
+}  
+  .progress {
+    background: rgba(255,255,255,0.1);
+    border-radius: 100px;
+
+    height: 30px;
+    width: 400px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    display: table;
+
+    text-align: left;
+  }
+
+select {
+    /* margin-top: 50px; */
+    /* padding: 50px; */
+    margin-left: auto;
+    margin-right: auto;
+    text-align:justify;
+    width: 100px;
+    height: 20px;
+    /* line-height: 60px; */
+    -webkit-appearance: menulist-button;  
+    -moz-appearance:none;
+}
+  
+.progress-value {
+    box-shadow: 0 10px 40px -10px #fff;
+    border-radius: 100px;
+    background: #fff;
+    height: 40px;
+    width: 40%;
+
+    display:inline-block;
+    vertical-align: middle;
+  }
+  
+  @keyframes load {
+    0% { width: 0; }
+    100% { width: 100%; }
+  }
+
+.button:hover{
+    color: #ffffff;
+    background: linear-gradient(to top, #3696d6, #86c4eb)
+}
+
+.active {
+    font-size: larger;
+    color: #ffffff;
+    background: linear-gradient(to top, #3696d6, #86c4eb);
+    font-weight: bolder;
+    text-decoration:solid;
+
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    line-height: 30px;
+}
+
+.submitbutton {
+    font-size: larger;
+    color: #ffffff;
+    background: linear-gradient(to top, #009940, #3eee87);
+    font-weight: bolder;
+    text-decoration:solid;
+
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    line-height: 30px;
+
+}
+
+.submitbutton:hover {
+    background: linear-gradient(to top, #36d673, #86ebc1)
+}
