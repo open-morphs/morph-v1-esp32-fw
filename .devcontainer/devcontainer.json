@@ -1,0 +1,22 @@
+{
+	"name": "Open Morphs ESP32 Smartcase (V1) Development Environment",
+	"image": "ghcr.io/shymega/esp-idf-pio-devcontainer:latest-esp-idf-v4.4",
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"platformio-ide.useBuiltinPython": true,
+		"platformio-ide.pioHomeServerHttpHost": "0.0.0.0",
+		"platformio-ide.pioHomeServerHttpPort": 8008,
+		"platformio-ide.disablePIOHomeStartup": true
+	},
+	"forwardPorts": [
+		8008
+	],
+	"extensions": [
+		"ms-vscode.cmake-tools",
+		"ms-vscode.cpptools",
+		"eamodio.gitlens",
+		"platformio.platformio-ide"
+	],
+	"userEnvProbe": "loginInteractiveShell",
+	"remoteUser": "vscode"
+}
