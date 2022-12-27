@@ -8,7 +8,6 @@
 #ifndef COMPONENTS_CPP_UTILS_BLE2902_H_
 #define COMPONENTS_CPP_UTILS_BLE2902_H_
 #include "sdkconfig.h"
-#if defined(CONFIG_BT_ENABLED)
 
 #include "BLEDescriptor.h"
 
@@ -33,5 +32,4 @@ namespace ESP32Kolban {
 	}; // BLE2902
 };
 
-#endif /* CONFIG_BT_ENABLED */
 #endif /* COMPONENTS_CPP_UTILS_BLE2902_H_ */
