@@ -19,9 +19,9 @@
 #include "driver/i2c.h"
 
 #ifdef LV_LVGL_H_INCLUDE_SIMPLE
-#include "src/lv_core/lv_refr.h"
+#include "src/core/lv_refr.h"
 #else
-#include "lvgl/src/lv_core/lv_refr.h"
+#include "lvgl/src/core/lv_refr.h"
 #endif
 
 /*********************
@@ -53,8 +53,8 @@
 /* Interface and driver initialization */
 void lvgl_driver_init(void)
 {
-    ESP_LOGI(TAG, "Display hor size: %d, ver size: %d", LV_HOR_RES_MAX, LV_VER_RES_MAX);
-    ESP_LOGI(TAG, "Display buffer size: %d", DISP_BUF_SIZE);
+   // ESP_LOGI(TAG, "Display hor size: %d, ver size: %d", LV_HOR_RES_MAX, LV_VER_RES_MAX);
+   // ESP_LOGI(TAG, "Display buffer size: %d", DISP_BUF_SIZE);
 
 #if defined (CONFIG_LV_TFT_DISPLAY_CONTROLLER_FT81X)
     ESP_LOGI(TAG, "Initializing SPI master for FT81X");

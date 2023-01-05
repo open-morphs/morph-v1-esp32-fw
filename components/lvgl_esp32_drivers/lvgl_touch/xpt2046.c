@@ -88,6 +88,7 @@ bool xpt2046_read(lv_indev_drv_t * drv, lv_indev_data_t * data)
 
     int16_t x = last_x;
     int16_t y = last_y;
+
     if (xpt2048_is_touch_detected() == TOUCH_DETECTED)
     {
         valid = true;
@@ -96,17 +97,22 @@ bool xpt2046_read(lv_indev_drv_t * drv, lv_indev_data_t * data)
         y = xpt2046_cmd(CMD_Y_READ);
         ESP_LOGI(TAG, "P(%d,%d)", x, y);
 
+       // printf("\nRAW: x = %d,y = %d)", x, y);
         /*Normalize Data back to 12-bits*/
         x = x >> 4;
         y = y >> 4;
         ESP_LOGI(TAG, "P_norm(%d,%d)", x, y);
-        
+  //      printf("\nNORM: x = %d,y = %d)", x, y);
         xpt2046_corr(&x, &y);
+  //      printf("\nCOR: x = %d,y = %d)", x, y);
         xpt2046_avg(&x, &y);
+//        printf("\nAVG: x = %d,y = %d)", x, y);
         last_x = x;
         last_y = y;
 
         ESP_LOGI(TAG, "x = %d, y = %d", x, y);
+//        printf("\nx = %d, y = %d", x, y);
+//        printf("\n-----------------");
     }
     else
     {
@@ -173,12 +179,15 @@ static void xpt2046_corr(int16_t * x, int16_t * y)
 
     if((*y) > XPT2046_Y_MIN)(*y) -= XPT2046_Y_MIN;
     else(*y) = 0;
-
+    //printf("\nCOMP: x = %d,y = %d)", *x, *y);
     (*x) = (uint32_t)((uint32_t)(*x) * LV_HOR_RES) /
            (XPT2046_X_MAX - XPT2046_X_MIN);
 
     (*y) = (uint32_t)((uint32_t)(*y) * LV_VER_RES) /
            (XPT2046_Y_MAX - XPT2046_Y_MIN);
+
+//    printf("\nX_MIN = %d,X_MAX = %d, X_INV = %d)", XPT2046_X_MIN, XPT2046_X_MAX,XPT2046_X_INV);
+//    printf("\nY_MIN = %d,Y_MAX = %d, Y_INV = %d)", XPT2046_Y_MIN, XPT2046_Y_MAX,XPT2046_Y_INV);
 
 #if XPT2046_X_INV != 0
     (*x) =  LV_HOR_RES - (*x);
