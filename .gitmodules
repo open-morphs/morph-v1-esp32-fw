@@ -3,10 +3,7 @@
 	url = https://github.com/atlex92/lvgl_classes
 [submodule "components/lvgl"]
 	path = components/lvgl
-	url = https://github.com/lvgl/lvgl.git
-[submodule "components/lvgl_esp32_drivers"]
-	path = components/lvgl_esp32_drivers
-	url = https://github.com/lvgl/lvgl_esp32_drivers.git
+	url = https://github.com/lvgl/lvgl
 [submodule "components/esp32_https_server"]
 	path = components/esp32_https_server
 	url = https://github.com/fhessel/esp32_https_server
