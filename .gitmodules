@@ -6,4 +6,16 @@
 	url = https://github.com/lvgl/lvgl
 [submodule "components/esp32_https_server"]
 	path = components/esp32_https_server
-	url = https://github.com/fhessel/esp32_https_server
+	url = https://github.com/open-morphs/esp32_https_server
+[submodule "components/utils"]
+	path = components/utils
+	url = https://mir.dev/bitbucket/scm/com/esp32_cpp_wrapper.git
+[submodule "components/lvgl_esp32_drivers"]
+	path = components/lvgl_esp32_drivers
+	url = https://github.com/lvgl/lvgl_esp32_drivers
+[submodule "components/cpp_utils"]
+	path = components/cpp_utils
+	url = https://mir.dev/bitbucket/scm/com/esp32_cpp_wrapper.git
+[submodule "components/arduino-esp32"]
+	path = components/arduino-esp32
+	url = https://github.com/espressif/arduino-esp32
