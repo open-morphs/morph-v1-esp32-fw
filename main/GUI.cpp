@@ -1045,7 +1045,7 @@ void GUI::createLockPage() {
     column_lockPage->setInnerPadding(LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 15);
 
     _unLockLabel = new LVGLLabel("", column_lockPage);
-    LVGLUnlocker* ul = new LVGLUnlocker(90, column_lockPage);
+    LVGLUnlocker* ul = new LVGLUnlocker(column_lockPage);
     ul->setStyleBgColor(LV_SLIDER_PART_INDIC, LV_STATE_DEFAULT, GUI_BG_COLOR);
 
     lv_obj_set_style_local_bg_grad_color(ul->innerData(), LV_SLIDER_PART_INDIC, LV_STATE_DEFAULT, GUI_HIGHLIGTH_COLOR);
