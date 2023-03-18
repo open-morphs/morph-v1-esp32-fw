@@ -1,6 +1,6 @@
 [submodule "components/lvgl_classes"]
 	path = components/lvgl_classes
-	url = https://github.com/atlex92/lvgl_classes
+	url = https://github.com/open-morphs/lvgl_classes
 [submodule "components/lvgl"]
 	path = components/lvgl
 	url = https://github.com/lvgl/lvgl
@@ -12,7 +12,7 @@
 	url = https://github.com/lvgl/lvgl_esp32_drivers
 [submodule "components/utils"]
 	path = components/utils
-	url = https://mir.dev/bitbucket/scm/com/esp32_cpp_wrapper.git
+	url = https://github.com/open-morphs/esp32_cpp_wrapper
 [submodule "components/arduino-esp32"]
 	path = components/arduino-esp32
 	url = https://github.com/AlexeyYukhin/arduino-esp32
