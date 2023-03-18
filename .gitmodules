@@ -15,4 +15,4 @@
 	url = https://github.com/open-morphs/esp32_cpp_wrapper
 [submodule "components/arduino-esp32"]
 	path = components/arduino-esp32
-	url = https://github.com/AlexeyYukhin/arduino-esp32
+	url = https://github.com/espressif/arduino-esp32
