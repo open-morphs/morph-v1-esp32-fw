@@ -175,9 +175,9 @@ void HttpWebserver::stopDelayed() {
         HttpWebserver* pHttpWebserver {static_cast<HttpWebserver*>(arg)};
         vTaskDelay(pdMS_TO_TICKS(50));
         pHttpWebserver->stop();
-        vTaskDelete(NULL);
+        vTaskDelete(nullptr);
     };
-    assert (pdTRUE == xTaskCreate(delayedStopTask, "delayedStopTask", configMINIMAL_STACK_SIZE*3, this, 1, NULL));
+    assert (pdTRUE == xTaskCreate(delayedStopTask, "delayedStopTask", configMINIMAL_STACK_SIZE*3, this, 1, nullptr));
 }
 
 void HttpWebserver::closeWebserverHandler(HTTPRequest * req, HTTPResponse * res) {
@@ -344,8 +344,8 @@ void HttpWebserver::updateHandler(HTTPRequest * req, HTTPResponse * res) {
     uint8_t rxBuff [MAX_RX_BUFFER_LENGTH] {};
     size_t totalContentReceived {};
     size_t receivedLength {};
-    const esp_partition_t* updatePartition = esp_ota_get_next_update_partition(NULL);
-    assert(updatePartition != NULL);
+    const esp_partition_t* updatePartition = esp_ota_get_next_update_partition(nullptr);
+    assert(updatePartition != nullptr);
 
     _flashStatus = eOtaStatus::OTA_NONE;
 	uint32_t lastTimeReceived {};
