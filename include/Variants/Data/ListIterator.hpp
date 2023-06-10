@@ -19,7 +19,7 @@ class ListIterator {
   friend class List<T>;
 
  public:
-  explicit ListIterator(ListNode<T> *node = NULL) : _node(node) {}
+  explicit ListIterator(ListNode<T> *node = nullptr) : _node(node) {}
 
   T &operator*() const {
     return _node->content;

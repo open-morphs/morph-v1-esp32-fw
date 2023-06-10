@@ -13,7 +13,7 @@ namespace Internals {
 template <typename T>
 class ListConstIterator {
  public:
-  explicit ListConstIterator(const ListNode<T> *node = NULL) : _node(node) {}
+  explicit ListConstIterator(const ListNode<T> *node = nullptr) : _node(node) {}
 
   const T &operator*() const {
     return _node->content;

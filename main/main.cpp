@@ -76,7 +76,7 @@ extern "C" void app_main() {
 #ifndef RELEASE_BUILD 
     #warning "RELEASE_BUILD is not set"
     // ONLY FOR DEBUG PURPOSE
-    assert(pdTRUE == xTaskCreate(consoleTask, "menuTask", configMINIMAL_STACK_SIZE*4, NULL, 1, NULL));
+    assert(pdTRUE == xTaskCreate(consoleTask, "menuTask", configMINIMAL_STACK_SIZE*4, nullptr, 1, nullptr));
 #endif
 
 #ifdef USE_DBG
@@ -93,9 +93,9 @@ extern "C" void app_main() {
     lvgl.start();
 
     lv_obj_set_style_local_bg_color(lv_scr_act(), LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_BLACK);
-    lv_obj_t* bootUpImage {lv_img_create(lv_disp_get_scr_act(NULL), NULL)};
+    lv_obj_t* bootUpImage {lv_img_create(lv_disp_get_scr_act(nullptr), nullptr)};
     lv_img_set_src(bootUpImage, &morph_img_black);
-    lv_obj_align(bootUpImage, NULL, LV_ALIGN_CENTER, 0, 0);
+    lv_obj_align(bootUpImage, nullptr, LV_ALIGN_CENTER, 0, 0);
 
     // ADC module launching, it's needed to measure battery voltage as fast as possible
     ADC_MODULE.init();
@@ -156,7 +156,7 @@ extern "C" void app_main() {
     BLE_DEVICE.start();
     SMARTCASE.enableDisplayManager();
 
-    assert(pdTRUE == xTaskCreate(batteryControlTask, "batteryTask", configMINIMAL_STACK_SIZE*3, NULL, 1, NULL));
+    assert(pdTRUE == xTaskCreate(batteryControlTask, "batteryTask", configMINIMAL_STACK_SIZE*3, nullptr, 1, nullptr));
 
     // launching physical button handler task
     caseBtn.start();
@@ -218,7 +218,7 @@ extern "C" void app_main() {
             BLE_DEVICE.start();
         }
     }
-    vTaskDelete(NULL);
+    vTaskDelete(nullptr);
 }
 
 void initializeMessagesDispatching() {
@@ -262,5 +262,5 @@ void batteryControlTask(void* args) {
         }
         delay(BATTERY_CHECK_TASK_PERIOD);
     }
-    vTaskDelete(NULL);
+    vTaskDelete(nullptr);
 }

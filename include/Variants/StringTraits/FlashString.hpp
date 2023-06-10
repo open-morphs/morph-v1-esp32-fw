@@ -44,10 +44,10 @@ struct StringTraits<const __FlashStringHelper*, void> {
 
   template <typename Buffer>
   static duplicate_t duplicate(const __FlashStringHelper* str, Buffer* buffer) {
-    if (!str) return NULL;
+    if (!str) return nullptr;
     size_t size = strlen_P((const char*)str) + 1;
     void* dup = buffer->alloc(size);
-    if (dup != NULL) memcpy_P(dup, (const char*)str, size);
+    if (dup != nullptr) memcpy_P(dup, (const char*)str, size);
     return static_cast<duplicate_t>(dup);
   }
 

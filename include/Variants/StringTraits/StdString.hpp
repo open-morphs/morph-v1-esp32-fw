@@ -23,15 +23,15 @@ struct StdStringTraits {
 
   template <typename Buffer>
   static duplicate_t duplicate(const TString& str, Buffer* buffer) {
-    if (!str.c_str()) return NULL;  // <- Arduino string can return NULL
+    if (!str.c_str()) return nullptr;  // <- Arduino string can return nullptr
     size_t size = str.length() + 1;
     void* dup = buffer->alloc(size);
-    if (dup != NULL) memcpy(dup, str.c_str(), size);
+    if (dup != nullptr) memcpy(dup, str.c_str(), size);
     return static_cast<duplicate_t>(dup);
   }
 
   static bool is_null(const TString& str) {
-    // Arduino's String::c_str() can return NULL
+    // Arduino's String::c_str() can return nullptr
     return !str.c_str();
   }
 
@@ -40,7 +40,7 @@ struct StdStringTraits {
   };
 
   static bool equals(const TString& str, const char* expected) {
-    // Arduino's String::c_str() can return NULL
+    // Arduino's String::c_str() can return nullptr
     const char* actual = str.c_str();
     if (!actual || !expected) return actual == expected;
     return 0 == strcmp(actual, expected);

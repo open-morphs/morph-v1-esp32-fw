@@ -131,6 +131,7 @@ bool MorphDevice::addPairedDevice(PairedDevice device) {
         const uint8_t* p = reinterpret_cast<const uint8_t*>(&device.macAddress);
         sprintf(device.name, "%02X:%02X:%02X:%02X:%02X:%02X", p[5], p[4], p[3], p[2], p[1], p[0]);
     }
+
     const bool addRes {_pairedDeviceList.insert(device).second};
     if (addRes) {
         savePairedDeviceListToFlash();

@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <stddef.h>  // for NULL
+#include <stddef.h>  // for nullptr
 
 #include "JsonBufferAllocated.hpp"
 
@@ -15,7 +15,7 @@ namespace Internals {
 // Used by List<T> and its iterators.
 template <typename T>
 struct ListNode : public Internals::JsonBufferAllocated {
-  ListNode() throw() : next(NULL) {}
+  ListNode() throw() : next(nullptr) {}
 
   ListNode<T> *next;
   T content;

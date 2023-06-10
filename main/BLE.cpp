@@ -52,7 +52,7 @@ BLE::BLE()
       _isProperlyConnected{false} {
 
   pairingSmphr = xSemaphoreCreateBinary();
-  assert(NULL != pairingSmphr);
+  assert(nullptr != pairingSmphr);
   setName(TAG);
   setStackSize(configMINIMAL_STACK_SIZE*4);
   setPriority(1);
@@ -982,7 +982,7 @@ void connectToHandsetTask(void* args) {
   if (true == MORPH_DEVICE.get_handsetConnected() and deviceToConnectTo->macAddress == MORPH_DEVICE.get_handsetMac()) {
     DBG_PRINT_TAG(TAG, "already connected!");
     delete deviceToConnectTo;
-    vTaskDelete(NULL);
+    vTaskDelete(nullptr);
   }
   
   BLE_DEVICE.notifyHandsetConnectionStarted();
@@ -994,7 +994,7 @@ void connectToHandsetTask(void* args) {
         BLE_DEVICE.notifyToast(LANGUAGE_PACK[eTitleType::TITLE_REQUEST_FAILED]);
         BLE_DEVICE.notifyHandsetConnectionFinished();
         delete deviceToConnectTo;
-        vTaskDelete(NULL);
+        vTaskDelete(nullptr);
     }
 
     const bool wasDisconnected {waitForHandsetDisconnection()};
@@ -1003,7 +1003,7 @@ void connectToHandsetTask(void* args) {
       BLE_DEVICE.notifyHandsetConnectionFinished();
       BLE_DEVICE.notifyToast(LANGUAGE_PACK[eTitleType::TITLE_TIMEOUT]);
       delete deviceToConnectTo;
-      vTaskDelete(NULL);
+      vTaskDelete(nullptr);
     }
   }
 
@@ -1012,7 +1012,7 @@ void connectToHandsetTask(void* args) {
       BLE_DEVICE.notifyHandsetConnectionFinished();
       BLE_DEVICE.notifyToast(LANGUAGE_PACK[eTitleType::TITLE_REQUEST_FAILED]);
       delete deviceToConnectTo;
-      vTaskDelete(NULL);
+      vTaskDelete(nullptr);
   }
 
   const bool wasConnected {waitForHandsetConnection()};
@@ -1021,7 +1021,7 @@ void connectToHandsetTask(void* args) {
     BLE_DEVICE.notifyHandsetConnectionFinished();
     BLE_DEVICE.notifyToast(LANGUAGE_PACK[eTitleType::TITLE_TIMEOUT]);
     delete deviceToConnectTo;
-    vTaskDelete(NULL);
+    vTaskDelete(nullptr);
   }
 
   const bool wasHandsetInfoReceived {waitForHandsetInformation()};
@@ -1030,7 +1030,7 @@ void connectToHandsetTask(void* args) {
     BLE_DEVICE.notifyHandsetConnectionFinished();
     BLE_DEVICE.notifyToast(LANGUAGE_PACK[eTitleType::TITLE_TIMEOUT]);
     delete deviceToConnectTo;
-    vTaskDelete(NULL);
+    vTaskDelete(nullptr);
   }
 
   BLE_DEVICE.notifyHandsetConnectionFinished();
@@ -1051,7 +1051,7 @@ void connectToHandsetTask(void* args) {
   }
 
   delete deviceToConnectTo;
-  vTaskDelete(NULL);
+  vTaskDelete(nullptr);
 }
 
 void BLE::notifyToast(const char* pString) {
@@ -1191,7 +1191,7 @@ void BLE::startHandsetConnectionTask(const PairedDevice& device) {
 
   PairedDevice* deviceParam = new PairedDevice{device};
   memcpy(deviceParam->name, device.name, MAX_DEVICE_NAME_LENGTH);
-  assert (pdTRUE == xTaskCreate(connectToHandsetTask, "connectToHandsetTask", configMINIMAL_STACK_SIZE*4, deviceParam, 1, NULL));
+  assert (pdTRUE == xTaskCreate(connectToHandsetTask, "connectToHandsetTask", configMINIMAL_STACK_SIZE*4, deviceParam, 1, nullptr));
 }
 
 bool BLE::requestDisconnectHandset() {

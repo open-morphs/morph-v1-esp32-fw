@@ -13,7 +13,7 @@
 #define AUTO_CALIBRATION_PERIOD_S               60
 
 static bool isGlobalTouchPadDriverInitialized {false};
-static xSemaphoreHandle touchPadDriverMux {NULL};
+static xSemaphoreHandle touchPadDriverMux {nullptr};
 static const char* const TAG {"TouchButton"};
 
 struct TouchButtonData_t {
@@ -70,7 +70,7 @@ bool TouchButton::initProcedure() {
 esp_err_t TouchButton::globalTouchPadDriverInit() {
 
     touchPadDriverMux = xSemaphoreCreateMutex();
-    assert (NULL != touchPadDriverMux);
+    assert (nullptr != touchPadDriverMux);
     ESP_ERROR_CHECK(touch_pad_init());
     ESP_ERROR_CHECK(touch_pad_set_voltage(TOUCH_HVOLT_2V7, TOUCH_LVOLT_0V5, TOUCH_HVOLT_ATTEN_1V));
     ESP_ERROR_CHECK(touch_pad_filter_start(TOUCHPAD_FILTER_TOUCH_PERIOD_MS));

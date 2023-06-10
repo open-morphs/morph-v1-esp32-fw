@@ -54,7 +54,7 @@ class JsonBuffer : Internals::NonCopyable {
   }
 
   // Allocates n bytes in the JsonBuffer.
-  // Return a pointer to the allocated memory or NULL if allocation fails.
+  // Return a pointer to the allocated memory or nullptr if allocation fails.
   virtual void *alloc(size_t size) = 0;
 
  protected:

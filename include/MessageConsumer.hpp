@@ -25,7 +25,7 @@ class MessageConsumer {
         }
 
         bool consumeMessage(message_t& out, const uint32_t timeoutMs = infinityRxTimeout) {
-            assert(NULL != _queueRx);
+            assert(nullptr != _queueRx);
             bool ret = false;
             if (pdTRUE == xQueueReceive(_queueRx, &out, (infinityRxTimeout == timeoutMs)? portMAX_DELAY : (timeoutMs/portTICK_RATE_MS))) {
                 ret = true;

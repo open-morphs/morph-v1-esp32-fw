@@ -195,7 +195,7 @@ Enter menu number from above...
 
                 for (unsigned int i = 0; i < chars.length(); i += 2) {
                     std::string byteString = chars.substr(i, 2);
-                    char byte = (char) strtol(byteString.c_str(), NULL, 16);
+                    char byte = (char) strtol(byteString.c_str(), nullptr, 16);
                     bytes.push_back(byte);
                 }
                 

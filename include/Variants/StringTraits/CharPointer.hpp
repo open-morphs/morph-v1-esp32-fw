@@ -43,10 +43,10 @@ struct CharPointerTraits {
 
   template <typename Buffer>
   static duplicate_t duplicate(const TChar* str, Buffer* buffer) {
-    if (!str) return NULL;
+    if (!str) return nullptr;
     size_t size = strlen(reinterpret_cast<const char*>(str)) + 1;
     void* dup = buffer->alloc(size);
-    if (dup != NULL) memcpy(dup, str, size);
+    if (dup != nullptr) memcpy(dup, str, size);
     return static_cast<duplicate_t>(dup);
   }
 

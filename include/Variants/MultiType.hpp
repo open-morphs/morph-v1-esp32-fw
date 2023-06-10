@@ -43,7 +43,7 @@ class MultiType : public Internals::JsonVariantBase<MultiType>{
         stringSize = strSize;
     }
     ~MultiType() {
-      if (NULL != _content.asString and stringSize > 0) {
+      if (nullptr != _content.asString and stringSize > 0) {
         delete[] _content.asString;
       }
     }

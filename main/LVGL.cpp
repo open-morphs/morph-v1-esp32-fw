@@ -46,8 +46,8 @@ bool LVGL::init() {
     lvgl_driver_init();
 
     _colorBuf = new lv_color_t[DISP_BUF_SIZE];
-    assert(_colorBuf != NULL);
-    lv_disp_buf_init(&_dispBuf, _colorBuf, NULL, DISP_BUF_SIZE);
+    assert(_colorBuf != nullptr);
+    lv_disp_buf_init(&_dispBuf, _colorBuf, nullptr, DISP_BUF_SIZE);
 
     lv_disp_drv_t disp_drv;
     lv_disp_drv_init(&disp_drv);

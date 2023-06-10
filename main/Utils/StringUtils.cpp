@@ -104,7 +104,7 @@ bool stringUtils::toUint64(const string &str, uint64_t &out) {
 string stringUtils::uint64ToHex(const uint64_t val) {
 
     uint32_t
-    length = snprintf(NULL, 0, "0x%"
+    length = snprintf(nullptr, 0, "0x%"
     PRIx64
     "", val);
     char *buf = new char[length + 1];
@@ -152,7 +152,7 @@ bool stringUtils::hexToUint64(const string &str, uint64_t &out) {
 
 string stringUtils::fromUint32(const uint32_t val) {
 
-    uint32_t length = snprintf(NULL, 0, "%u", val);
+    uint32_t length = snprintf(nullptr, 0, "%u", val);
     char *buf = new char[length + 1];
     snprintf(buf, length + 1, "%u", val);
     string str(buf);
@@ -162,7 +162,7 @@ string stringUtils::fromUint32(const uint32_t val) {
 
 string stringUtils::fromUint64(const uint64_t val) {
 
-    uint32_t length = snprintf(NULL, 0, "%llu", val);
+    uint32_t length = snprintf(nullptr, 0, "%llu", val);
     char *buf = new char[length + 1];
     snprintf(buf, length + 1, "%llu", val);
     string str(buf);

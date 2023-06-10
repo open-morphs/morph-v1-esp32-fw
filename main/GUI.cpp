@@ -66,7 +66,7 @@ void GUI::handleMessage(const message_t& msg) {
             if (BLE_DEVICE.isConnected()) {
                 // addToast(LANGUAGE_PACK[eTitleType::TITLE_EARBUDS_CONNECTED]);
                 // to prevent going to sleep if we were waiting for a connection
-                lv_disp_trig_activity(NULL);
+                lv_disp_trig_activity(nullptr);
             }
         break;
 
@@ -163,7 +163,7 @@ void GUI::updateAncMode(const bool ancState, const eAncMode ancMode) {
 void GUI::init(xSemaphoreHandle mutex) {
 
     _toastSmphr = xSemaphoreCreateBinary();
-    assert(NULL != _toastSmphr);
+    assert(nullptr != _toastSmphr);
 
     _lvglMutex = mutex;
     ResourceAccessor accessor(_lvglMutex);

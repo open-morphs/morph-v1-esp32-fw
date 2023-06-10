@@ -40,9 +40,9 @@ inline const char *MultiType::variantAsString() const {
   using namespace Internals;
   if (_type == JSON_UNPARSED && _content.asString &&
       !strcmp("null", _content.asString))
-    return NULL;
+    return nullptr;
   if (_type == JSON_STRING || _type == JSON_UNPARSED) return _content.asString;
-  return NULL;
+  return nullptr;
 }
 
 template <typename T>
@@ -68,7 +68,7 @@ inline bool MultiType::variantIsBoolean() const {
   using namespace Internals;
   if (_type == JSON_BOOLEAN) return true;
 
-  if (_type != JSON_UNPARSED || _content.asString == NULL) return false;
+  if (_type != JSON_UNPARSED || _content.asString == nullptr) return false;
 
   return !strcmp(_content.asString, "true") ||
          !strcmp(_content.asString, "false");

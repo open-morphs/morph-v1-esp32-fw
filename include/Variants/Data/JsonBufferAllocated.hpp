@@ -12,7 +12,7 @@ namespace Internals {
 class JsonBufferAllocated {
  public:
   void *operator new(size_t n, JsonBuffer *jsonBuffer) throw() {
-    if (!jsonBuffer) return NULL;
+    if (!jsonBuffer) return nullptr;
     return jsonBuffer->alloc(n);
   }
 

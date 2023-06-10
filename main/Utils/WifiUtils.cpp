@@ -76,13 +76,13 @@ void WifiUtils::bssidFromStrToArray(const char *bssidStr, uint8_t bssidNum[BSSID
 
     token = strtok_r((char *) stringToken.data(), ":", &savePtr);
 
-    while (token != NULL) {
+    while (token != nullptr) {
 
         if (digitIndex >= BSSID_DIGITS) {
             break;
         }
-        bssidNum[digitIndex++] = strtoul(token, NULL, 16);
-        token = strtok_r(NULL, ":", &savePtr);
+        bssidNum[digitIndex++] = strtoul(token, nullptr, 16);
+        token = strtok_r(nullptr, ":", &savePtr);
     }
 }
 

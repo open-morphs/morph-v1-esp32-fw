@@ -13,7 +13,7 @@ namespace Variants {
 namespace Internals {
 template <typename T>
 T parseInteger(const char *s) {
-  if (!s) return 0;  // NULL
+  if (!s) return 0;  // nullptr
 
   if (*s == 't') return 1;  // "true"
 

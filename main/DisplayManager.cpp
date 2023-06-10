@@ -21,7 +21,7 @@ DisplayManager::DisplayManager()
 }
 
 // void DisplayManager::triggerAcitivity() {
-//     lv_disp_trig_activity(NULL);
+//     lv_disp_trig_activity(nullptr);
 // }
 
 void DisplayManager::run(void* args) {
@@ -32,14 +32,14 @@ void DisplayManager::run(void* args) {
         static bool isScreenActive {true};
         setSleepTime(SETTINGS.displayOffPeriod() * 1000);
 
-        if (lv_disp_get_inactive_time(NULL) > _shutdownTime) {
+        if (lv_disp_get_inactive_time(nullptr) > _shutdownTime) {
             SMARTCASE.safeSwitchOff(LANGUAGE_PACK[eTitleType::TITLE_SWITCHING_OFF]);
             while(1) {
                 // actually shouldn't be here
                 delay(100);
             }
         }
-        if(lv_disp_get_inactive_time(NULL) > _sleepTime and false == WEBSERVER.isOtaRunning()) {
+        if(lv_disp_get_inactive_time(nullptr) > _sleepTime and false == WEBSERVER.isOtaRunning()) {
             if (false == BLE_DEVICE.isConnected() and false == WEBSERVER.isActive()) {
                 SMARTCASE.safeSwitchOff(LANGUAGE_PACK[eTitleType::TITLE_GOING_TO_POWER_SAVING]);
                 while(1) {
