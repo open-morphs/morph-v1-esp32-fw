@@ -1,0 +1,9 @@
+version: "3"
+services:
+  builder:
+    stdin_open: true
+    tty: true
+    privileged: true
+    image: "ghcr.io/shymega/esp-idf-pio-devcontainer:latest-esp-idf-v4.3"
+    volumes:
+      - ./:/usr/src:Z
