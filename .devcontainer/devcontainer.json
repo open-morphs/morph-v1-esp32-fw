@@ -21,7 +21,5 @@
   "forwardPorts": [
     8008
   ],
-  "userEnvProbe": "loginInteractiveShell",
-  "remoteUser": "vscode",
-  "containerUser": "vscode"
+  "userEnvProbe": "loginInteractiveShell"
 }
